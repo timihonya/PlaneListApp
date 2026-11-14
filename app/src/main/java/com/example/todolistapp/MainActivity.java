@@ -3,7 +3,6 @@ package com.example.todolistapp;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -14,8 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import org.json.JSONArray;
 
 import java.util.ArrayList;
 
@@ -50,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 String model = editModel.getText().toString().trim();
                 String speed_seats = editSpeedSeats.getText().toString();
                 String cost = editCost.getText().toString().trim();
-                if (!model.isEmpty() && !speed_seats.isEmpty() && !cost.isEmpty()){
+                if (!model.isEmpty() && !speed_seats.isEmpty() && !cost.isEmpty()) {
                     tasks.add(new Plane(model, speed_seats, cost));
                     adapter.notifyDataSetChanged();
 
