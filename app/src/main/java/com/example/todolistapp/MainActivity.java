@@ -1,8 +1,6 @@
 package com.example.todolistapp;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -20,8 +18,6 @@ public class MainActivity extends AppCompatActivity {
 
     private final ArrayList<Plane> tasks = new ArrayList<>();
     private PlaneAdapter adapter;
-    private ListView listView;
-    private Button button;
     private EditText editModel, editSpeedSeats, editCost;
 
 
@@ -31,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        listView = findViewById(R.id.listView);
-        button = findViewById(R.id.button);
+        ListView listView = findViewById(R.id.listView);
+        Button button = findViewById(R.id.button);
         editModel = findViewById(R.id.editModel);
         editSpeedSeats = findViewById(R.id.editSpeedSeats);
         editCost = findViewById(R.id.editCost);
@@ -41,31 +37,25 @@ public class MainActivity extends AppCompatActivity {
 
         listView.setAdapter(adapter);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String model = editModel.getText().toString().trim();
-                String speed_seats = editSpeedSeats.getText().toString();
-                String cost = editCost.getText().toString().trim();
-                if (!model.isEmpty() && !speed_seats.isEmpty() && !cost.isEmpty()) {
-                    tasks.add(new Plane(model, speed_seats, cost));
-                    adapter.notifyDataSetChanged();
+        button.setOnClickListener(view -> {
+            String model = editModel.getText().toString().trim();
+            String speed_seats = editSpeedSeats.getText().toString();
+            String cost = editCost.getText().toString().trim();
+            if (!model.isEmpty() && !speed_seats.isEmpty() && !cost.isEmpty()) {
+                tasks.add(new Plane(model, speed_seats, cost));
+                adapter.notifyDataSetChanged();
 
-                    editModel.setText("");
-                    editSpeedSeats.setText("");
-                    editCost.setText("");
-                }
+                editModel.setText("");
+                editSpeedSeats.setText("");
+                editCost.setText("");
             }
         });
 
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                tasks.remove(i);
-                adapter.notifyDataSetChanged();
-                Toast.makeText(MainActivity.this, "Удалено", Toast.LENGTH_SHORT).show();
-                return true;
-            }
+        listView.setOnItemLongClickListener((adapterView, view, i, l) -> {
+            tasks.remove(i);
+            adapter.notifyDataSetChanged();
+            Toast.makeText(MainActivity.this, "Удалено", Toast.LENGTH_SHORT).show();
+            return true;
         });
 
 

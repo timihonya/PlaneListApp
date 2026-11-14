@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -10,20 +11,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="Модель" />
+        android:text="Модель"
+        tools:ignore="HardcodedText,VisualLintSystemUi" />
 
     <TextView
         android:id="@+id/speedSeats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="Скорость и места" />
+        android:text="Скорость и места"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/costMoney"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="Цена" />
+        android:text="Цена"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>
