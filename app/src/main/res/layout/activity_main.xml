@@ -9,9 +9,26 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editModel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Введите модель"
+        android:ems="10"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/editSpeedSeats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите скорость и кол-во мест"
+        android:ems="10"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/editCost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите цену"
         android:ems="10"
         android:inputType="text" />
 
@@ -25,4 +42,5 @@
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 </LinearLayout>

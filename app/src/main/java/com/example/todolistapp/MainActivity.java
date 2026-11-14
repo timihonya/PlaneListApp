@@ -15,15 +15,17 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final ArrayList<String> tasks = new ArrayList<>();
-    private ArrayAdapter<String> adapter;
+    private final ArrayList<Plane> tasks = new ArrayList<>();
+    private PlaneAdapter adapter;
     private ListView listView;
     private Button button;
-    private EditText editText;
+    private EditText editModel, editSpeedSeats, editCost;
 
 
     @Override
@@ -34,24 +36,27 @@ public class MainActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.listView);
         button = findViewById(R.id.button);
-        editText = findViewById(R.id.editTextText);
+        editModel = findViewById(R.id.editModel);
+        editSpeedSeats = findViewById(R.id.editSpeedSeats);
+        editCost = findViewById(R.id.editCost);
 
-        adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                tasks
-        );
+        adapter = new PlaneAdapter(this, tasks);
 
         listView.setAdapter(adapter);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String text = editText.getText().toString().trim();
-                if (!text.isEmpty()){
-                    tasks.add(text);
+                String model = editModel.getText().toString().trim();
+                String speed_seats = editSpeedSeats.getText().toString();
+                String cost = editCost.getText().toString().trim();
+                if (!model.isEmpty() && !speed_seats.isEmpty() && !cost.isEmpty()){
+                    tasks.add(new Plane(model, speed_seats, cost));
                     adapter.notifyDataSetChanged();
-                    editText.setText("");
+
+                    editModel.setText("");
+                    editSpeedSeats.setText("");
+                    editCost.setText("");
                 }
             }
         });
